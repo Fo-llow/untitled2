@@ -7,9 +7,10 @@
       </el-header>
       <el-container>
         <el-main>
-          <br /><br /><br />
-          <br /><br /><br />
-          <br /><br /><br />
+          <br>
+          <br>
+          <br>
+          <br>
         <template>
           <el-page-header content="公告" @back="goBack" />
         </template>

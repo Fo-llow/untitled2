@@ -4,7 +4,7 @@
       <el-descriptions title="个人信息"
                        :column="2"
                        size="large"
-                       style="width: 50%;margin-left: 15%"
+                       style="width: 50%;margin: 0 auto;"
                        border>
         <el-descriptions-item label="用户名">{{infoData.username}}</el-descriptions-item>
         <el-descriptions-item label="姓名">{{infoData.name}}</el-descriptions-item>
@@ -14,7 +14,9 @@
         <el-descriptions-item label="电子邮箱">{{infoData.email}}</el-descriptions-item>
       </el-descriptions>
       <br />
-      <el-button type="primary" style="margin-left: 20%" @click="editInfo">完善/修改个人信息</el-button>
+      <div>
+      <el-button type="primary" style="margin-left:40%;text-align: center;" @click="editInfo">完善/修改个人信息</el-button>
+    </div>
     </template>
 
     <!-- 修改的对话框 -->

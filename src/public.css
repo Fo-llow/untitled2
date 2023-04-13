@@ -10,3 +10,4 @@
     white-space: nowrap;        /*强制同一行内显示所有文本文字，让所有文字内容中一排显示不换行。*/
     text-overflow: ellipsis;    /*当对象内文本一处时显示省略标记(...)。*/
 }
+

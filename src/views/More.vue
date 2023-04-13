@@ -11,7 +11,7 @@
           <template>
             <el-page-header content="全部公告" @back="goBack" />
           </template>
-          <el-form :model="param"  ref="find" label-width="80px" style="margin-left: 280px;margin-top: 10px">
+          <el-form :model="param"  ref="find" label-width="80px" style="margin-top: 10px;margin: 0 auto;text-align: center;">
             <el-form-item label="" prop="find">
 
               <el-input type="text" placeholder="请输入关键词" size="small"
@@ -23,7 +23,7 @@
           </el-form>
 
         <div style="margin-left: 140px;">
-              <el-table :data="tableData" style="width: 100%" id="table" >
+              <el-table :data="tableData" style="width: 80%;margin: 0 auto;" id="table" >
                 <el-table-column prop="time" label="发布时间" width="200" />
                 <el-table-column prop="title" label="公告标题" width="500" />
                 <el-table-column prop="operation" label="操作" width="80">
@@ -47,7 +47,7 @@
               </el-table>
               <br />
               <template style="width: 100%">
-                <div style="display:block;margin-left: 35%;">
+                <div style="display:block;text-align: center;">
 
                   <el-pagination background layout="prev, pager, next" :total="pagenum"
                                  :hide-on-single-page="false" :current-page="page" :page-size="5"
@@ -358,4 +358,8 @@ export default {
   overflow: hidden;
   font-family: 宋体,SimSun; font-size: 16px;
 }
+.el-table::before{
+  width: auto;
+}
+
 </style>

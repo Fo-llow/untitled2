@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
     <router-view />
   </div>
 </template>
@@ -29,4 +29,7 @@ export default {
 
 <style lang="less" scoped>
 *{margin:0; padding:0;}
+[v-clock]{
+  display: none;
+}
 </style>

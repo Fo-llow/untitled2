@@ -67,8 +67,8 @@
             <div style="margin-left: 10px;margin-top: 100px">
               <el-card>
                 <span>欢迎注册</span>
-                <p>您好！欢迎您注册”考易通“自学考试报名系统。<br/>
-                  注册为本系统的用户，您可以根据注册时填写的用户名和密码登录本系统，可以进行本科报名等。<br/>
+                <p>您好！欢迎您注册”考易通“自学考试报名系统！<br><br>
+                  注册为本系统的用户，您可以根据注册时填写的用户名和密码登录本系统，可以进行本科报名等。<br><br>
                   提交前请牢记您的用户名和密码，它将是您登录系统唯一的依据。谢谢！ </p>
               </el-card>
             </div>
@@ -247,8 +247,8 @@ name: "Register",
   margin-left:300px;
 }
 .el-card{
-  width: 270px;
-  height: 320px;
+  width: 380px;
+  height: auto;
   margin-top:250px;
   margin-left:150px;
  span{

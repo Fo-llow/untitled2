@@ -38,7 +38,7 @@ export function tokenlogin(cookies,axios,store,router,message,help) {       // e
 
 
 // 登录判断（不需要管name的函数）
-export function tokenlogin2(cookies,axios,store,router,message) {
+export function tokenlogin2(cookies,axios,store,router,message,help) {
 
     if( cookies.get("token") == null || cookies.get("token") == undefined   ){        //为空,这里好像没用
         //直接返回首页
@@ -59,6 +59,7 @@ export function tokenlogin2(cookies,axios,store,router,message) {
         if (response.data['msg'] == "ok") {
             //将信息传过去
             store.commit('login', response.data)
+            help.name = response.data['name']
         }else{
             //直接返回首页
             message({
@@ -131,6 +132,7 @@ export function tokenadminlogin2(cookies,axios,store,router,message) {
         if (response.data['msg'] == "ok") {
             //将信息传过去
             store.commit('adminlogin', response.data)
+            // help.name = response.data['username']
         }else{
             //直接返回首页
             message({
