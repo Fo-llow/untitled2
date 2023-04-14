@@ -18,175 +18,175 @@
           </el-button>
         </div>
         <div>
-        <el-collapse
-          accordion
-          style="width: 540px; margin: 0 auto; white-space: pre-wrap"
-        >
-          <el-collapse-item title="高级筛选" name="1">
-            <el-card style="width: 540px">
-              <el-button
-                style="margin-right: 1px"
-                type="danger"
-                size="small"
-                @click="cancel"
-                >清除筛选</el-button
+          <el-collapse
+            accordion
+            style="width: 540px; margin: 0 auto; white-space: pre-wrap"
+          >
+            <el-collapse-item title="高级筛选" name="1">
+              <el-card style="width: 540px">
+                <el-button
+                  style="margin-right: 1px"
+                  type="danger"
+                  size="small"
+                  @click="cancel"
+                  >清除筛选</el-button
+                >
+                <div>
+                  <span>内容：</span>
+                  <br />
+                  <el-radio-group
+                    v-model="tagchoose.content.which"
+                    size="small"
+                    @change="toTag"
+                  >
+                    <el-radio-button
+                      label="姓名"
+                      @click.native.prevent="radioClick('姓名', 1)"
+                    />
+                    <el-radio-button
+                      label="身份证号"
+                      @click.native.prevent="radioClick('身份证号', 1)"
+                    />
+                    <el-radio-button
+                      label="准考证号"
+                      @click.native.prevent="radioClick('准考证号', 1)"
+                    />
+                    <el-radio-button
+                      label="电子邮箱"
+                      @click.native.prevent="radioClick('电子邮箱', 1)"
+                    />
+                    <el-radio-button
+                      label="手机号码"
+                      @click.native.prevent="radioClick('手机号码', 1)"
+                    />
+                  </el-radio-group>
+                </div>
+                <div>
+                  <span>性别：</span>
+                  <br />
+                  <el-radio-group v-model="tagchoose.sex.which" size="small">
+                    <el-radio-button
+                      label="男"
+                      @click.native.prevent="radioClick('男', 2)"
+                    />
+                    <el-radio-button
+                      label="女"
+                      @click.native.prevent="radioClick('女', 2)"
+                    />
+                  </el-radio-group>
+                </div>
+                <div>
+                  <span>专业层次：</span>
+                  <br />
+                  <el-radio-group
+                    v-model="tagchoose.zycc.which"
+                    size="small"
+                    @change="toTag"
+                  >
+                    <el-radio-button
+                      label="本科"
+                      @click.native.prevent="radioClick('本科', 3)"
+                    />
+                    <el-radio-button
+                      label="专科"
+                      @click.native.prevent="radioClick('专科', 3)"
+                    />
+                  </el-radio-group>
+                </div>
+
+                <div>
+                  <span>报考学校：</span>
+                  <br />
+                  <el-radio-group
+                    v-model="tagchoose.zymc.which"
+                    size="small"
+                    @change="toTag"
+                  >
+                    <el-radio-button
+                      label="华南师范大学"
+                      @click.native.prevent="radioClick('华南师范大学', 4)"
+                      :disabled="zy"
+                    />
+                    <el-radio-button
+                      label="中山大学"
+                      @click.native.prevent="radioClick('中山大学', 4)"
+                      :disabled="zy"
+                    />
+                    <el-radio-button
+                      label="深圳大学"
+                      @click.native.prevent="radioClick('深圳大学', 4)"
+                      :disabled="zy"
+                    />
+                    <el-radio-button
+                      label="暨南大学"
+                      @click.native.prevent="radioClick('暨南大学', 4)"
+                      :disabled="zy"
+                    />
+                    <el-radio-button
+                      label="广东工业大学"
+                      @click.native.prevent="radioClick('广东工业大学', 4)"
+                      :disabled="zy"
+                    />
+                    <el-radio-button
+                      label="广州大学"
+                      @click.native.prevent="radioClick('广州大学', 4)"
+                      :disabled="zy"
+                    />
+                    <el-radio-button
+                      label="华南理工大学"
+                      @click.native.prevent="radioClick('华南理工大学', 4)"
+                      :disabled="zy"
+                    />
+
+                    <el-radio-button
+                      label="华南农业大学"
+                      @click.native.prevent="radioClick('华南农业大学', 4)"
+                      :disabled="bk"
+                    />
+                    <el-radio-button
+                      label="广东财经大学"
+                      @click.native.prevent="radioClick('广东财经大学', 4)"
+                      :disabled="bk"
+                    />
+                  </el-radio-group>
+                </div>
+
+                <div>
+                  <span>审核结果：</span>
+                  <br />
+                  <el-radio-group
+                    v-model="tagchoose.res.which"
+                    size="small"
+                    @change="toTag"
+                  >
+                    <el-radio-button
+                      label="审核通过"
+                      @click.native.prevent="radioClick('审核通过', 5)"
+                    />
+                    <el-radio-button
+                      label="审核不通过"
+                      @click.native.prevent="radioClick('审核不通过', 5)"
+                    />
+                    <el-radio-button
+                      label="未审核"
+                      @click.native.prevent="radioClick('未审核', 5)"
+                    />
+                  </el-radio-group>
+                </div>
+              </el-card>
+              筛选结果：<br />
+              <el-tag
+                v-for="tag in tags"
+                :key="tag.name"
+                class="mx-1"
+                closable
+                @close="handleClose(tag)"
+                :type="tag.type"
               >
-              <div>
-                <span>内容：</span>
-                <br />
-                <el-radio-group
-                  v-model="tagchoose.content.which"
-                  size="small"
-                  @change="toTag"
-                >
-                  <el-radio-button
-                    label="姓名"
-                    @click.native.prevent="radioClick('姓名', 1)"
-                  />
-                  <el-radio-button
-                    label="身份证号"
-                    @click.native.prevent="radioClick('身份证号', 1)"
-                  />
-                  <el-radio-button
-                    label="准考证号"
-                    @click.native.prevent="radioClick('准考证号', 1)"
-                  />
-                  <el-radio-button
-                    label="电子邮箱"
-                    @click.native.prevent="radioClick('电子邮箱', 1)"
-                  />
-                  <el-radio-button
-                    label="手机号码"
-                    @click.native.prevent="radioClick('手机号码', 1)"
-                  />
-                </el-radio-group>
-              </div>
-              <div>
-                <span>性别：</span>
-                <br>
-                <el-radio-group v-model="tagchoose.sex.which" size="small">
-                  <el-radio-button
-                    label="男"
-                    @click.native.prevent="radioClick('男', 2)"
-                  />
-                  <el-radio-button
-                    label="女"
-                    @click.native.prevent="radioClick('女', 2)"
-                  />
-                </el-radio-group>
-              </div>
-              <div>
-                <span>专业层次：</span>
-                <br>
-                <el-radio-group
-                  v-model="tagchoose.zycc.which"
-                  size="small"
-                  @change="toTag"
-                >
-                  <el-radio-button
-                    label="本科"
-                    @click.native.prevent="radioClick('本科', 3)"
-                  />
-                  <el-radio-button
-                    label="专科"
-                    @click.native.prevent="radioClick('专科', 3)"
-                  />
-                </el-radio-group>
-              </div>
-
-              <div>
-                <span>报考学校：</span>
-                <br>
-                <el-radio-group
-                  v-model="tagchoose.zymc.which"
-                  size="small"
-                  @change="toTag"
-                >
-                  <el-radio-button
-                    label="华南师范大学"
-                    @click.native.prevent="radioClick('华南师范大学', 4)"
-                    :disabled="zy"
-                  />
-                  <el-radio-button
-                    label="中山大学"
-                    @click.native.prevent="radioClick('中山大学', 4)"
-                    :disabled="zy"
-                  />
-                  <el-radio-button
-                    label="深圳大学"
-                    @click.native.prevent="radioClick('深圳大学', 4)"
-                    :disabled="zy"
-                  />
-                  <el-radio-button
-                    label="暨南大学"
-                    @click.native.prevent="radioClick('暨南大学', 4)"
-                    :disabled="zy"
-                  />
-                  <el-radio-button
-                    label="广东工业大学"
-                    @click.native.prevent="radioClick('广东工业大学', 4)"
-                    :disabled="zy"
-                  />
-                  <el-radio-button
-                    label="广州大学"
-                    @click.native.prevent="radioClick('广州大学', 4)"
-                    :disabled="zy"
-                  />
-                  <el-radio-button
-                    label="华南理工大学"
-                    @click.native.prevent="radioClick('华南理工大学', 4)"
-                    :disabled="zy"
-                  />
-
-                  <el-radio-button
-                    label="华南农业大学"
-                    @click.native.prevent="radioClick('华南农业大学', 4)"
-                    :disabled="bk"
-                  />
-                  <el-radio-button
-                    label="广东财经大学"
-                    @click.native.prevent="radioClick('广东财经大学', 4)"
-                    :disabled="bk"
-                  />
-                </el-radio-group>
-              </div>
-
-              <div>
-                <span>审核结果：</span>
-                <br>
-                <el-radio-group
-                  v-model="tagchoose.res.which"
-                  size="small"
-                  @change="toTag"
-                >
-                  <el-radio-button
-                    label="审核通过"
-                    @click.native.prevent="radioClick('审核通过', 5)"
-                  />
-                  <el-radio-button
-                    label="审核不通过"
-                    @click.native.prevent="radioClick('审核不通过', 5)"
-                  />
-                  <el-radio-button
-                    label="未审核"
-                    @click.native.prevent="radioClick('未审核', 5)"
-                  />
-                </el-radio-group>
-              </div>
-            </el-card>
-            筛选结果：<br>
-            <el-tag
-              v-for="tag in tags"
-              :key="tag.name"
-              class="mx-1"
-              closable
-              @close="handleClose(tag)"
-              :type="tag.type"
-            >
-              {{ tag.name }}
-            </el-tag>
-          </el-collapse-item>
-        </el-collapse>
+                {{ tag.name }}
+              </el-tag>
+            </el-collapse-item>
+          </el-collapse>
         </div>
       </el-form-item>
 
@@ -213,7 +213,14 @@
           </el-input>
         -->
     </el-form>
-    <div style="float: right;margin-bottom: 15px;">
+    <div style="float: right; margin-bottom: 15px">
+      <el-tooltip
+        effect="dark"
+        content="仅当前页面未审核的数据"
+        placement="top"
+      >
+        <el-button type="primary" @click="RandompassSign">智能审核</el-button>
+      </el-tooltip>
       <el-tooltip
         effect="dark"
         content="仅当前页面未审核的数据"
@@ -263,21 +270,66 @@
     </el-table>
 
     <el-table :data="tableData" style="width: 100%" class="roomtable">
-      <el-table-column prop="name" label="姓名" align="center" style="width:50px;"/>
-      <el-table-column prop="sex" label="性别" align="center" style="width:5%;"/>
-      <el-table-column prop="sfzh" label="身份证号" align="center" style="width:10%;"/>
-      <el-table-column prop="ticket" label="准考证号" align="center" style="width:8%;"/>
-      <el-table-column prop="tele" label="手机号码" align="center" style="width:10%;"/>
-      <el-table-column prop="email" label="电子邮箱" align="center" style="width:10%;"/>
-      <el-table-column prop="zycc" label="专业层次" align="center" style="width:10%;"/>
-      <el-table-column prop="zymc" label="报考学校" align="center" style="width:8%;"/>
-      <el-table-column prop="kcdm" label="课程代码" align="center" style="width:10%;"/>
+      <el-table-column
+        prop="name"
+        label="姓名"
+        align="center"
+        style="width: 50px"
+      />
+      <el-table-column
+        prop="sex"
+        label="性别"
+        align="center"
+        style="width: 5%"
+      />
+      <el-table-column
+        prop="sfzh"
+        label="身份证号"
+        align="center"
+        style="width: 10%"
+      />
+      <el-table-column
+        prop="ticket"
+        label="准考证号"
+        align="center"
+        style="width: 8%"
+      />
+      <el-table-column
+        prop="tele"
+        label="手机号码"
+        align="center"
+        style="width: 10%"
+      />
+      <el-table-column
+        prop="email"
+        label="电子邮箱"
+        align="center"
+        style="width: 10%"
+      />
+      <el-table-column
+        prop="zycc"
+        label="专业层次"
+        align="center"
+        style="width: 10%"
+      />
+      <el-table-column
+        prop="zymc"
+        label="报考学校"
+        align="center"
+        style="width: 8%"
+      />
+      <el-table-column
+        prop="kcdm"
+        label="课程代码"
+        align="center"
+        style="width: 10%"
+      />
       <el-table-column
         prop="file"
         label="个人文件"
         #default="scope"
         align="center"
-        style="width:8%;"
+        style="width: 8%"
       >
         <el-link
           v-for="(f, key) in segmenteFile(scope.row.file)"
@@ -287,8 +339,38 @@
           >{{ f.fname }}</el-link
         >
       </el-table-column>
-      <el-table-column prop="res" label="审核结果" align="center" style="width:5%;"/>
-      <el-table-column label="操作" align="center" style="width:10%;">
+      <el-table-column
+        prop="res"
+        label="审核结果"
+        align="center"
+        style="width: 5%"
+      >
+        <template #default="scope">
+          <div v-if="tableData[scope.$index].res == '未审核'">
+            <el-button type="text">未审核</el-button>
+          </div>
+          <div v-if="tableData[scope.$index].res == '审核通过'">
+            <el-button type="text">审核通过</el-button>
+          </div>
+          <div v-if="tableData[scope.$index].res == '审核不通过'">
+            <el-tooltip class="tooltip" effect="dark" placement="left-start">
+              <div slot="content">
+                {{ RefWarning[Math.floor(Math.random() * (8 - 0 + 1)) + 0] }}
+              </div>
+              <el-button type="text">审核不通过</el-button>
+            </el-tooltip>
+          </div>
+        </template>
+
+        <!-- <el-button
+        type="text"
+        v-for="item in tableData[scope.$index]"
+        :key="item.ticket"
+        #default="scope"
+        >{{ item.res }}
+        </el-button> -->
+      </el-table-column>
+      <el-table-column label="操作" align="center" style="width: 10%">
         <template #default="scope">
           <div v-if="tableData[scope.$index].res == '未审核'">
             <el-button type="primary" circle @click="PassSign(scope.$index)">
@@ -313,7 +395,7 @@
     </el-table>
     <br />
     <template>
-      <div style="display: block;">
+      <div style="display: block">
         <el-pagination
           background
           layout="prev, pager, next"
@@ -370,6 +452,17 @@ export default {
       type: 1,
       tableData: [],
       outData: [],
+      RefWarning: [
+        "身份证号或准考证号填写错误或与提交的个人文件不符。",
+        "个人文件未按要求提交或提交的照片质量不清晰。",
+        "学生填写的手机号码或电子邮箱无法联系，或者联系方式填写错误。",
+        "学生提交的个人文件内容与报考专业不符，如报考计算机专业却提交艺术作品。",
+        "学生填写的信息不完整或不符合要求，未上传个人文件。",
+        "个人文件中的照片与身份证照片不一致，或者照片不符合标准要求。",
+        "学生填写的信息与报考条件不符，如报名年龄不符合要求。",
+        "个人文件中的学历、成绩单等证明材料不符合要求，如未经公证或认证。",
+        "学生所报考的专业或课程要求具备特定的资格或证书，而学生没有提供相关的证明文件。",
+      ],
     };
   },
   created() {
@@ -744,6 +837,38 @@ export default {
         }
       });
     },
+    // 智能审核
+    RandompassSign() {
+      this.$confirm("此操作将智能审核当前页面的数据, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          for (let i = 0; i < this.tableData.length; i++) {
+            if (
+              this.tableData[i]["res"] == "未审核" &&
+              this.tableData[i]["file"] != ""
+            ) {
+              this.PassSign(i);
+            }
+          }
+          this.$message({
+            type: "success",
+            message: "智能审核成功!",
+          });
+
+          this.showPage(this.page);
+          this.$forceUpdate();
+        })
+        .catch(() => {
+          //console.log(error)
+          this.$message({
+            type: "info",
+            message: "取消智能审核",
+          });
+        });
+    },
     //一键审核通过
     AllpassSign() {
       this.$confirm(
@@ -817,18 +942,18 @@ export default {
   margin: 0 auto;
   width: 450px;
 }
-.el-collapse-item__header{
+.el-collapse-item__header {
   font-size: 16px;
 }
 .el-pagination {
-    text-align: center; 
+  text-align: center;
 }
-.el-card{
-  span{
+.el-card {
+  span {
     font-weight: bold;
   }
 }
-.el-radio-button{
-  border:none;
+.el-radio-button {
+  border: none;
 }
 </style>

@@ -1,25 +1,12 @@
 <template>
   <div>
     <div class="infotable">
-      <el-card class="welcome-card">
-        <div>
-          <div style="display: flex">
-            <el-avatar icon="el-icon-user" :size="40"></el-avatar>
-            <p class="name">{{ help.name }}，欢迎回来！</p>
-          </div>
-          <div>
-            <p class="loginfo">
-              登录时间：<span>{{ getDate() }}</span>
-            </p>
-          </div>
-        </div>
-      </el-card>
-
+      <div style="position: relative; width: 65%">
       <el-table
         :data="AnnounceData"
         :header-cell-style="{ background: '#3b6496', color: '#fff' }"
       >
-        <el-table-column prop="link" label="通知公告" width="840">
+        <el-table-column prop="link" label="通知公告">
           <template #default="scope">
             <el-link
               @click="LookAnnounce(AnnounceData[scope.$index].link)"
@@ -50,9 +37,23 @@
         </el-table-column>
       </el-table>
     </div>
+    <el-card class="welcome-card">
+        <div>
+          <div style="display: flex">
+            <el-avatar icon="el-icon-user" :size="40"></el-avatar>
+            <p class="name">{{ help.name }}，欢迎回来！</p>
+          </div>
+          <div>
+            <p class="loginfo">
+              登录时间：<span>{{ getDate() }}</span>
+            </p>
+          </div>
+        </div>
+      </el-card>
+    </div>
 
     <div class="img-div">
-      <div style="position: relative; width: 60%">
+      <div style="position: relative; width: 65%">
         <el-carousel indicator-position="outside" height="400px">
           <el-carousel-item>
             <div
@@ -302,8 +303,12 @@ export default {
   zoom: 1;
 }
 .welcome-card {
-  margin-right: 30px;
-  width: 25%;
+  margin-left: 30px;
+  margin-right: 10px;
+  text-align: center;
+  width: 30%;
+  height: auto;
+  right: 0;
 }
 .name {
   font-size: 16px;
@@ -317,8 +322,10 @@ export default {
   margin-bottom: 20px;
 }
 .el-table {
-  float: right;
-  width: 70%;
+  float: left;
+  /* width: 70%; */
+  margin-right: 40px;
+  overflow-x: auto;
 }
 .img-div {
   position: relative;
@@ -328,14 +335,18 @@ export default {
   line-height: 400px;
 }
 .links {
-  margin-left: 40px;
+  margin-left: 30px;
   text-align: center;
   width: 30%;
   height: auto;
+  right: 0;
+  /* float: right; */
+  /* position: absolute; */
   /* padding-right: 20px; */
+  margin-right: 10px;
 }
 .el-card__header {
-  background-color: #3b6496;
+  /* background-color: #3b6496; */
 }
 .links-content {
   font-size: 15px;

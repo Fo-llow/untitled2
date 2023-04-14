@@ -1,6 +1,42 @@
 <template>
   <div>
     <div class="infotable">
+      <div style="position: relative; width: 65%">
+        <el-table
+          :data="AnnounceData"
+          :header-cell-style="{ background: '#3b6496', color: '#fff' }"
+        >
+          <el-table-column prop="link" label="通知公告">
+            <template #default="scope">
+              <el-link
+                @click="LookAnnounce(AnnounceData[scope.$index].link)"
+                target="_blank"
+                :title="AnnounceData[scope.$index].title"
+                >{{
+                  "【" +
+                  AnnounceData[scope.$index].time +
+                  "】" +
+                  AnnounceData[scope.$index].title
+                }}</el-link
+              >
+            </template>
+            <!-- <span>名字</span> -->
+          </el-table-column>
+
+          <el-table-column prop="" width="80">
+            <template slot="header">
+              <!-- <span>名字</span> -->
+              <!--          <a href="" target="_blank" class="buttonText">更多</a>-->
+              <el-link
+                type="primary"
+                style="text-align: center; color: #fff; font-weight: 700"
+                @click="goMore"
+                >更多</el-link
+              >
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
       <el-card class="welcome-card">
         <div>
           <div style="display: flex">
@@ -14,44 +50,10 @@
           </div>
         </div>
       </el-card>
-      <el-table
-        :data="AnnounceData"
-        :header-cell-style="{ background: '#3b6496', color: '#fff' }"
-      >
-        <el-table-column prop="link" label="通知公告" width="840">
-          <template #default="scope">
-            <el-link
-              @click="LookAnnounce(AnnounceData[scope.$index].link)"
-              target="_blank"
-              :title="AnnounceData[scope.$index].title"
-              >{{
-                "【" +
-                AnnounceData[scope.$index].time +
-                "】" +
-                AnnounceData[scope.$index].title
-              }}</el-link
-            >
-          </template>
-          <!-- <span>名字</span> -->
-        </el-table-column>
-
-        <el-table-column prop="" width="80">
-          <template slot="header">
-            <!-- <span>名字</span> -->
-            <!--          <a href="" target="_blank" class="buttonText">更多</a>-->
-            <el-link
-              type="primary"
-              style="text-align: center; color: #fff; font-weight: 700"
-              @click="goMore"
-              >更多</el-link
-            >
-          </template>
-        </el-table-column>
-      </el-table>
     </div>
 
     <div class="img-div">
-      <div style="position: relative; width: 60%">
+      <div style="position: relative; width: 65%">
         <el-carousel indicator-position="outside" height="400px">
           <el-carousel-item>
             <div
@@ -261,7 +263,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 #main {
   float: left;
   width: 680px;
@@ -300,8 +302,17 @@ export default {
   zoom: 1;
 }
 .welcome-card {
-  margin-right: 30px;
-  width: 25%;
+  /* margin-right: 30px; */
+  /* width: 25%; */
+  margin-left: 30px;
+  margin-right: 10px;
+  text-align: center;
+  width: 30%;
+  height: auto;
+  right: 0;
+  /* float: right; */
+  /* position: absolute; */
+  /* padding-right: 20px; */
 }
 .name {
   font-size: 16px;
@@ -315,8 +326,10 @@ export default {
   margin-bottom: 20px;
 }
 .el-table {
-  float: right;
-  width: 70%;
+  float: left;
+  // width: 60%;
+  margin-right: 40px;
+  overflow-x: auto;
 }
 .img-div {
   position: relative;
@@ -326,14 +339,18 @@ export default {
   line-height: 400px;
 }
 .links {
-  margin-left: 40px;
+  margin-left: 30px;
   text-align: center;
   width: 30%;
   height: auto;
+  right: 0;
+  /* float: right; */
+  // position: absolute;
   /* padding-right: 20px; */
+  margin-right: 10px;
 }
 .el-card__header {
-  background-color: #3b6496;
+  /* background-color: #3b6496; */
 }
 .links-content {
   font-size: 15px;

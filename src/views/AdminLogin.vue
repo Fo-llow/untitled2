@@ -5,7 +5,6 @@
         <Header></Header>
       </el-header>
       <el-container>
-        <el-main style="width: 980px">
           <div class="content">
             <div class="TopPic"></div>
             <div class="contentWrap">
@@ -31,8 +30,6 @@
               </div>
             </div>
           </div>
-        </el-main>
-        <el-main>
           <!--
           prop：表单域 model 字段，在使用 validate、resetFields 方法的情况下，该属性是必填的
           -->
@@ -100,7 +97,6 @@
               >
             </div>
           </div>
-        </el-main>
       </el-container>
       <el-foot>
         <Footer></Footer>
@@ -252,7 +248,7 @@ export default {
   max-width: 400px;
   z-index: 2; //z-index 属性指定一个元素的堆叠顺序。
   width: 100%;
-  position: absolute;
+  // position: absolute;
   right: 40px;
 }
 .sontable {
@@ -273,18 +269,25 @@ export default {
   width: 980px;
 }
 .content {
-  margin: auto;
-  width: 980px;
+  margin-left: 20px;
+  float: left;
+  width: 60%;
+  // width: 980px;
+  display: flex;
+  position: relative;
+  min-width: 50%;
 }
 .contentWrap {
   padding-top: 25px;
+  padding-right: 30px;
 }
 
 .colum_1 {
   margin-left: 10vh;
   float: left;
-  _display: inline;
-  width: 80%;
+  display: inline;
+  width: auto;
+  // min-width: 50%;
 }
 
 .colum_2 {
