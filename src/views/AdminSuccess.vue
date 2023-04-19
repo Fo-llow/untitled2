@@ -39,6 +39,10 @@
               <i class="el-icon-house"></i>
               首页</el-menu-item
             >
+            <el-menu-item index="/adminsuccess/admindataview">
+              <i class="el-icon-data-analysis"></i>
+              数据统计</el-menu-item
+            >
             <el-submenu index="1">
               <template slot="title">
                 <i class="el-icon-menu"></i>
@@ -68,7 +72,7 @@
           </el-menu>
         </el-aside>
         <el-container>
-          <el-main style="margin-top: 90px">
+          <el-main style="margin-top: 90px;margin-bottom:90px;">
             <!-- 路由占位符 -->
             <router-view></router-view>
           </el-main>
@@ -146,7 +150,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 @import "../public.css";
 .user {
   margin-top: 10px;
@@ -158,5 +162,14 @@ export default {
   text-align: center;
   float: right;
   margin: 10px;
+}
+.el-container {
+  // flex-wrap: wrap;
+  // align-items: flex-start;
+  display: flex;
+  //margin: 0 auto;
+}
+.el-main{
+  height: auto;
 }
 </style>

@@ -20,7 +20,8 @@ import FileSaver from "file-saver";
 import * as XLSX from "xlsx";
 import App from './App.vue'
 import router from "./router"
-
+import echarts from "echarts";
+Vue.prototype.$echarts = echarts;
 
 
 Vue.prototype.$common = common;    // 全局变量

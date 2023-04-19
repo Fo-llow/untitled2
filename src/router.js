@@ -22,6 +22,7 @@ import PersonInfo from "@/views/PersonInfo";
 import Announcement from "@/views/Announcement";
 import AdminIndex from "@/views/AdminIndex";
 import More from "@/views/More";
+import AdminDataview from "@/views/AdminDataview";
 
 Vue.use(Router);
 
@@ -145,6 +146,11 @@ export default new Router({
                     path: "adminindex",
                     component: AdminIndex
                 },
+                // 数据可视化
+                {
+                    path:"admindataview",
+                    component:AdminDataview
+                }
             ]
         },
 
